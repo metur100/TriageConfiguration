@@ -1,0 +1,129 @@
+{
+  "customerName": "CE Poland",
+  "description": "CE Poland Triage Configuration V1",
+  "rulesets": [
+    {
+      "description": "Ruleset 1",
+      "rules": [
+        {
+          "description": "Total loss",
+          "criteria": "TotalLoss",
+          "type": "Boolean",
+          "booleanStateValue": true,
+          "orderNumber": 0
+        }
+      ],
+      "results": [
+        {
+          "name": "Total loss",
+          "description": "Based on the amount of damage, it can be assumed to be a total loss. I would be happy to make an appointment with our expert to verify this.",
+          "orderNumber": 0,
+          "repairCostsVisible": true,
+          "residualValueVisible": true,
+          "replacementValueVisible": true
+        }
+      ],
+      "orderNumber": 1
+    },
+    {
+      "description": "Ruleset 2",
+      "rules": [
+        {
+          "description": "Is it a car",
+          "criteria": "IsCar",
+          "type": "Boolean",
+          "booleanStateValue": false,
+          "orderNumber": 0
+        }
+      ],
+      "results": [
+        {
+          "name": "Follow-up Processing",
+          "description": "This case can not been processed, we would suggest a follow-up processing.",
+          "orderNumber": 0,
+          "repairCostsVisible": true,
+          "residualValueVisible": true,
+          "replacementValueVisible": true
+        }
+      ],
+      "orderNumber": 2
+    },
+    {
+      "description": "Ruleset 3",
+      "rules": [
+        {
+          "description": "Count of damaged parts",
+          "criteria": "CountDamagedParts",
+          "Type": "Range",
+          "rangeMinValue": 0,
+          "rangeMaxValue": 0,
+          "orderNumber": 0
+        }
+      ],
+      "results": [
+        {
+          "name": "Follow-up Processing",
+          "description": "This case can not been processed, we would suggest a follow-up processing.",
+          "orderNumber": 0,
+          "repairCostsVisible": true,
+          "residualValueVisible": true,
+          "replacementValueVisible": true
+        }
+      ],
+      "orderNumber": 3
+    },
+    {
+      "description": "Ruleset 4",
+      "rules": [
+        {
+          "description": "Safety relevant parts",
+          "criteria": "SafetyRelevantPartsAffected",
+          "type": "Boolean",
+          "booleanStateValue": true,
+          "orderNumber": 0
+        }
+      ],
+      "results": [
+        {
+          "name": "Body shop",
+          "description": "Safety-relevant parts on your vehicle were probably damaged in the accident. I would therefore recommend that you have your vehicle repaired at our partner body shop. I would be happy to arrange an appointment directly at a body shop near you.",
+          "orderNumber": 0,
+          "repairCostsVisible": true,
+          "residualValueVisible": true,
+          "replacementValueVisible": true
+        }
+      ],
+      "orderNumber": 4
+    },
+    {
+      "description": "Ruleset 5",
+      "rules": [
+        {
+          "description": "Safety relevant parts",
+          "criteria": "SafetyRelevantPartsAffected",
+          "type": "Boolean",
+          "booleanStateValue": false,
+          "orderNumber": 0
+        }
+      ],
+      "results": [
+        {
+          "name": "Cash settlement",
+          "description": "Presumably, no safety-relevant parts were damaged on your vehicle. Most customers would decide for a cash settlement in such a case. In this case, you will receive a payout instead of the repair. You can request a line-by-line calculation via Easy Claim.",
+          "orderNumber": 0,
+          "repairCostsVisible": true,
+          "residualValueVisible": true,
+          "replacementValueVisible": true
+        }
+      ],
+      "orderNumber": 5
+    }
+  ],
+  "defaultResult": {
+    "name": "Body shop",
+    "description": "Safety-relevant parts on your vehicle were probably damaged in the accident. I would therefore recommend that you have your vehicle repaired at our partner body shop. I would be happy to arrange an appointment directly at a body shop near you.",
+    "repairCostsVisible": false,
+    "residualValueVisible": false,
+    "replacementValueVisible": false
+  }
+}

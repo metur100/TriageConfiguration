@@ -1,0 +1,246 @@
+﻿{
+  "customerName": "AZ Direct D",
+  "description": "AZDirectD configuration v2",
+  "rulesets": [
+    {
+      "description": "Ruleset 1",
+      "rules": [
+        {
+          "description": "Handelt es sich um einen PKW",
+          "criteria": "IsCar",
+          "type": "Boolean",
+          "booleanStateValue": false,
+          "orderNumber": 1
+        }
+      ],
+      "results": [
+        {
+          "name": "Sachverständiger",
+          "repairCostsVisible": false,
+          "residualValueVisible": false,
+          "replacementValueVisible": false
+        }
+      ],
+      "orderNumber": 1
+    },
+    {
+      "description": "Ruleset 2",
+      "rules": [
+        {
+          "description": "Number of damaged parts",
+          "criteria": "CountDamagedParts",
+          "type": "Range",
+          "RangeMinValue": 0,
+          "RangeMaxValue": 0,
+          "orderNumber": 1
+        }
+      ],
+      "results": [
+        {
+          "name": "Weitere Folgebearbeitung",
+          "repairCostsVisible": false,
+          "residualValueVisible": false,
+          "replacementValueVisible": false
+        }
+      ],
+      "orderNumber": 2
+    },
+    {
+      "description": "Ruleset 3",
+      "rules": [
+        {
+          "description": "Totalschaden",
+          "criteria": "TotalLoss",
+          "type": "Boolean",
+          "booleanStateValue": true,
+          "orderNumber": 1
+        },
+        {
+          "description": "Reparaturkosten Verhältnis",
+          "criteria": "RepairCostsRatio",
+          "type": "Range",
+          "rangeMinValue": 1,
+          "rangeMaxValue": 10,
+          "orderNumber": 2
+        }
+      ],
+      "results": [
+        {
+          "name": "Echter Totalschaden",
+          "repairCostsVisible": true,
+          "residualValueVisible": true,
+          "replacementValueVisible": true
+        }
+      ],
+      "orderNumber": 3
+    },
+    {
+      "description": "Ruleset 4",
+      "rules": [
+        {
+          "description": "Totalschaden",
+          "criteria": "TotalLoss",
+          "type": "Boolean",
+          "booleanStateValue": true,
+          "orderNumber": 1
+        },
+        {
+          "description": "Reparaturkosten Verhältnis",
+          "criteria": "RepairCostsRatio",
+          "type": "Range",
+          "rangeMinValue": 0,
+          "rangeMaxValue": 0.99,
+          "orderNumber": 2
+        }
+      ],
+      "results": [
+        {
+          "name": "Wirtschaftlicher Totalschaden",
+          "repairCostsVisible": true,
+          "residualValueVisible": true,
+          "replacementValueVisible": true
+        }
+      ],
+      "orderNumber": 4
+    },
+    {
+      "description": "Ruleset 5",
+      "rules": [
+        {
+          "description": "Fiktive Auszahlung",
+          "criteria": "IsFlatPayout",
+          "type": "Boolean",
+          "booleanStateValue": true,
+          "orderNumber": 1
+        }
+      ],
+      "results": [
+        {
+          "name": "Fiktive Auszahlung Pauschale Auszahlung",
+          "repairCostsVisible": true,
+          "residualValueVisible": false,
+          "replacementValueVisible": false
+        }
+      ],
+      "orderNumber": 5
+    },
+    {
+      "description": "Ruleset 6",
+      "rules": [
+        {
+          "description": "Handelt es sich um einen komplexen Schaden",
+          "criteria": "IsComplexDamage",
+          "type": "Boolean",
+          "booleanStateValue": true,
+          "orderNumber": 1
+        },
+        {
+          "description": "Sicherheitsrelevante Teile beschädigt.",
+          "criteria": "SafetyRelevantPartsAffected",
+          "type": "Boolean",
+          "booleanStateValue": true,
+          "orderNumber": 2
+        }
+      ],
+      "results": [
+        {
+          "name": "Werkstatt Videobegutachtung",
+          "repairCostsVisible": false,
+          "residualValueVisible": false,
+          "replacementValueVisible": false
+        }
+      ],
+      "orderNumber": 6
+    },
+    {
+      "description": "Ruleset 7",
+      "rules": [
+        {
+          "description": "Handelt es sich um einen komplexen Schaden",
+          "criteria": "IsComplexDamage",
+          "type": "Boolean",
+          "booleanStateValue": true,
+          "orderNumber": 1
+        },
+        {
+          "description": "Sicherheitsrelevante Teile beschädigt.",
+          "criteria": "SafetyRelevantPartsAffected",
+          "type": "Boolean",
+          "booleanStateValue": false,
+          "orderNumber": 2
+        }
+      ],
+      "results": [
+        {
+          "name": "Fiktive Auszahlung Videokalkulation",
+          "repairCostsVisible": false,
+          "residualValueVisible": false,
+          "replacementValueVisible": false
+        }
+      ],
+      "orderNumber": 7
+    },
+    {
+      "description": "Ruleset 8",
+      "rules": [
+        {
+          "description": "Handelt es sich um einen komplexen Schaden",
+          "criteria": "IsComplexDamage",
+          "type": "Boolean",
+          "booleanStateValue": false,
+          "orderNumber": 1
+        },
+        {
+          "description": "Sicherheitsrelevante Teile beschädigt.",
+          "criteria": "SafetyRelevantPartsAffected",
+          "type": "Boolean",
+          "booleanStateValue": true,
+          "orderNumber": 2
+        }
+      ],
+      "results": [
+        {
+          "name": "Werkstatt Fotokalkulation",
+          "repairCostsVisible": false,
+          "residualValueVisible": false,
+          "replacementValueVisible": false
+        }
+      ],
+      "orderNumber": 8
+    },
+    {
+      "description": "Ruleset 9",
+      "rules": [
+        {
+          "description": "Handelt es sich um einen komplexen Schaden",
+          "criteria": "IsComplexDamage",
+          "type": "Boolean",
+          "booleanStateValue": false,
+          "orderNumber": 1
+        },
+        {
+          "description": "Sicherheitsrelevante Teile beschädigt.",
+          "criteria": "SafetyRelevantPartsAffected",
+          "type": "Boolean",
+          "booleanStateValue": false,
+          "orderNumber": 2
+        }
+      ],
+      "results": [
+        {
+          "name": "Fiktive Auszahlung Fotokalkulation",
+          "repairCostsVisible": true,
+          "residualValueVisible": false,
+          "replacementValueVisible": false
+        }
+      ],
+      "orderNumber": 9
+    }
+  ],
+  "defaultResult": {
+    "name": "Fiktive Auszahlung Videokalkulation",
+    "repairCostsVisible": false,
+    "residualValueVisible": false,
+    "replacementValueVisible": false
+  }
+}
