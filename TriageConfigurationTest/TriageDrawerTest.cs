@@ -1,9 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
 using TriageConfiguration.TriageElements;
-using TriageConfiguration.TrieageDrawer;
 using Moq;
 using NUnit.Framework;
+using TriageConfiguration.Drawer;
 
 namespace TriageConfigurationTest
 {
@@ -13,12 +13,12 @@ namespace TriageConfigurationTest
         public void Draw_OneRuleSetWithOneRule_RulesSentToDrawer()
         {
             var mockTriageDrawer = new Mock<ITriageDrawer>();
-            TriageDrawer.Draw(DeserializeJson("TestFiles\\RuleSetWithOneRule.json"), mockTriageDrawer.Object);
+            TriageDrawer.Draw(DeserializeJson("TestFiles\\RuleSetWithOneRule.json"), mockTriageDrawer.Object, OutputTypeEnum.Text);
 
             string resultDescription = "Based on the amount of damage, it can be assumed to be a total loss.";
             string defaultDescription = "This case can be processed as Default Result.";
 
-            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description"), Times.Once());
+            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description", OutputTypeEnum.Text), Times.Once());
             mockTriageDrawer.Verify(x => x.StartRuleSet("Ruleset 1"), Times.Once);
             mockTriageDrawer.Verify(x => x.AddBoolRule(CriteriaEnum.TotalLoss, true), Times.Once);
             mockTriageDrawer.Verify(x => x.AddRegExRule(It.IsAny<CriteriaEnum?>(), It.IsAny<string?>()), Times.Never);
@@ -32,11 +32,11 @@ namespace TriageConfigurationTest
         public void Draw_NoRuleSets_RulesSentToDrawer()
         {
             var mockTriageDrawer = new Mock<ITriageDrawer>();
-            TriageDrawer.Draw(DeserializeJson("TestFiles\\NoRuleSets.json"), mockTriageDrawer.Object);
+            TriageDrawer.Draw(DeserializeJson("TestFiles\\NoRuleSets.json"), mockTriageDrawer.Object, OutputTypeEnum.Text);
 
             string defaultDescription = "This case can be processed as Default Result.";
 
-            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description"), Times.Once());
+            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description", OutputTypeEnum.Text), Times.Once());
             mockTriageDrawer.Verify(x => x.StartRuleSet(It.IsAny<string?>()), Times.Once);
             mockTriageDrawer.Verify(x => x.AddBoolRule(It.IsAny<CriteriaEnum?>(), It.IsAny<bool?>()), Times.Never);
             mockTriageDrawer.Verify(x => x.AddRegExRule(It.IsAny<CriteriaEnum?>(), It.IsAny<string?>()), Times.Never);
@@ -50,12 +50,12 @@ namespace TriageConfigurationTest
         public void Draw_NoRulesOnlyResult_RulesSentToDrawer()
         {
             var mockTriageDrawer = new Mock<ITriageDrawer>();
-            TriageDrawer.Draw(DeserializeJson("TestFiles\\NoRules.json"), mockTriageDrawer.Object);
+            TriageDrawer.Draw(DeserializeJson("TestFiles\\NoRules.json"), mockTriageDrawer.Object, OutputTypeEnum.Text);
 
             string resultDescription = "Based on the amount of damage, it can be assumed to be a total loss.";
             string defaultDescription = "This case can be processed as Default Result.";
 
-            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description"), Times.Once());
+            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description", OutputTypeEnum.Text), Times.Once());
             mockTriageDrawer.Verify(x => x.StartRuleSet("Ruleset 1"), Times.Once);
             mockTriageDrawer.Verify(x => x.AddBoolRule(It.IsAny<CriteriaEnum?>(), It.IsAny<bool?>()), Times.Never);
             mockTriageDrawer.Verify(x => x.AddRegExRule(It.IsAny<CriteriaEnum?>(), It.IsAny<string?>()), Times.Never);
@@ -69,12 +69,12 @@ namespace TriageConfigurationTest
         public void Draw_OneRuleSetWithMoreRules_RulesSentToDrawer()
         {
             var mockTriageDrawer = new Mock<ITriageDrawer>();
-            TriageDrawer.Draw(DeserializeJson("TestFiles\\RuleSetWithMoreRules.json"), mockTriageDrawer.Object);
+            TriageDrawer.Draw(DeserializeJson("TestFiles\\RuleSetWithMoreRules.json"), mockTriageDrawer.Object, OutputTypeEnum.Text);
 
             string resultDescription = "Based on the details, it can be assumed to be request information.";
             string defaultDescription = "This case can be processed as Default Result.";
 
-            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description"), Times.Once());
+            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description", OutputTypeEnum.Text), Times.Once());
             mockTriageDrawer.Verify(x => x.StartRuleSet("Ruleset 1"), Times.Once);
             mockTriageDrawer.Verify(x => x.AddBoolRule(CriteriaEnum.IsCar, true), Times.Once);
             mockTriageDrawer.Verify(x => x.AddRegExRule(CriteriaEnum.DamageType, "Brand|Explo|Ueber"), Times.Once);
@@ -88,13 +88,13 @@ namespace TriageConfigurationTest
         public void Draw_MoreRuleSetsWithOneRuleEach_RulesSentToDrawer()
         {
             var mockTriageDrawer = new Mock<ITriageDrawer>();
-            TriageDrawer.Draw(DeserializeJson("TestFiles\\MoreRuleSetsWithOneRuleEach.json"), mockTriageDrawer.Object);
+            TriageDrawer.Draw(DeserializeJson("TestFiles\\MoreRuleSetsWithOneRuleEach.json"), mockTriageDrawer.Object, OutputTypeEnum.Text);
 
             string resultDescriptionTotalLoss = "Based on the amount of damage, it can be assumed to be a total loss.";
             string resultDescriptionIsCar = "Regarding the damage to your vehicle, unfortunately we need more information.";
             string defaultDescription = "This case can be processed as Default Result.";
 
-            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description"), Times.Once());
+            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description", OutputTypeEnum.Text), Times.Once());
             mockTriageDrawer.Verify(x => x.StartRuleSet("Ruleset 1"), Times.Once);
             mockTriageDrawer.Verify(x => x.StartRuleSet("Ruleset 2"), Times.Once);
             mockTriageDrawer.Verify(x => x.StartRuleSet("Ruleset 3"), Times.Once);
@@ -111,13 +111,13 @@ namespace TriageConfigurationTest
         public void Draw_MoreRuleSetsWithMoreRules_RulesSentToDrawer()
         {
             var mockTriageDrawer = new Mock<ITriageDrawer>();
-            TriageDrawer.Draw(DeserializeJson("TestFiles\\MoreRuleSetsWithMoreRules.json"), mockTriageDrawer.Object);
+            TriageDrawer.Draw(DeserializeJson("TestFiles\\MoreRuleSetsWithMoreRules.json"), mockTriageDrawer.Object, OutputTypeEnum.Text);
 
             string resultDescriptionTotalLoss = "Based on the amount of damage, it can be assumed to be a total loss.";
             string resultDescriptionIsCar = "Regarding the damage to your vehicle, unfortunately we need more information.";
             string defaultDescription = "This case can be processed as Default Result.";
 
-            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description"), Times.Once());
+            mockTriageDrawer.Verify(x => x.StartSet("Test Customer", "Test Customer Description", OutputTypeEnum.Text), Times.Once());
             mockTriageDrawer.Verify(x => x.StartRuleSet("Ruleset 1"), Times.Once);
             mockTriageDrawer.Verify(x => x.StartRuleSet("Ruleset 2"), Times.Once);
             mockTriageDrawer.Verify(x => x.StartRuleSet("Ruleset 3"), Times.Once);

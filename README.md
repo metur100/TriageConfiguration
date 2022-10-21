@@ -1,9 +1,11 @@
-## Triage Configurations
-Standard
-- [JSON](https://git.controlexpert.com/claimsteering/claimsteeringbackend/-/blob/master/source/Domain.Tests/TriageConfigurationTests/StandardTriageConfiguration.json)
-- [JPEG](https://git.controlexpert.com/claimsadvisor/claimsadvisorbackend/-/blob/master/source/Domain.Tests/TriageConfigurationTests/Standard_Konfiguration.jpeg)
+# Triage Configurations Visualization
+## INPUT
+- [JSON](https://git.controlexpert.com/claimsadvisor/triageconfigvisualization/-/blob/master/Input-Output/Allianz_SOK_Configuration.json)
 
+## OUTPUT
+- [HTML_IMAGE](https://git.controlexpert.com/claimsadvisor/triageconfigvisualization/-/blob/master/Input-Output/Html_Image_Allianz_SOK.html)
+- [PNG_IMAGE](https://git.controlexpert.com/claimsadvisor/triageconfigvisualization/-/blob/master/Input-Output/Png_Image_Allianz_SOK.png)
+- [PDF_IMAGE](https://git.controlexpert.com/claimsadvisor/triageconfigvisualization/-/blob/master/Input-Output/Pdf_Image_Allianz_SOK)
+- [HTML_TEXT](https://git.controlexpert.com/claimsadvisor/triageconfigvisualization/-/blob/master/Input-Output/Html_Text_Allianz_SOK.html)
+- [TEXT](https://git.controlexpert.com/claimsadvisor/triageconfigvisualization/-/blob/master/Input-Output/Text_Allianz_SOK.txt)
 
-AZDirectD
-- [JSON](https://git.controlexpert.com/claimsadvisor/claimsadvisorbackend/-/blob/master/source/Domain.Tests/TriageConfigurationTests/AllianzDirectD/AZDirectDConfiguration.json)
-- [PNG](https://git.controlexpert.com/claimsadvisor/claimsadvisorbackend/-/blob/master/source/Domain.Tests/TriageConfigurationTests/AllianzDirectD/AZDirectD.png)

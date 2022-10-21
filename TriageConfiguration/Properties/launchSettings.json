@@ -2,7 +2,7 @@
   "profiles": {
     "TriageConfiguration": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\\\Users\\\\mturkes\\\\Downloads\\\\Allianz_SOK_Configuration.json"
+      "commandLineArgs": "C:\\\\Users\\\\medin\\\\Downloads\\\\Allianz_SOK_Configuration.json"
     },
     "WSL": {
       "commandName": "WSL2",
